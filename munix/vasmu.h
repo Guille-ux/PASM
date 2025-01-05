@@ -1,5 +1,1 @@
-#include "src/resources.h"
-#include "src/parser.h"
-#include "src/compiler.h"
 #include "src/exec.h"
-#include "src/shell.h"
