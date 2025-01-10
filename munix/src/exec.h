@@ -15,31 +15,31 @@ void exec(int ins) {
     int in = (ins / 10*10) % 10;
 
     if (opcode == 1) {
-        if (value = 0) {
+        if (value == 0) {
             *outreg = in;
         } else {
             *outreg = mach.regs[in];
         }
     } else if (opcode == 2) {
-        if (value = 0) {
+        if (value == 0) {
             *outreg += in;
         } else {
             *outreg += mach.regs[in];
         }
     } else if (opcode == 3) {
-        if (value = 0) {
+        if (value == 0) {
             *outreg -= in;
         } else {
             *outreg -= mach.regs[in];
         }
     } else if (opcode == 4) {
-        if (value = 0) {
+        if (value == 0) {
             *outreg *= in;
         } else {
             *outreg *= mach.regs[in];
         }
     } else if (opcode == 5) {
-        if (value = 0) {
+        if (value == 0) {
             *outreg /= in;
         } else {
             *outreg /= mach.regs[in];
