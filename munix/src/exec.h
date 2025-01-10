@@ -70,6 +70,8 @@ void exec(int ins) {
 
         if (condition_met) {
             mach.counter = jump_target;
+        } else if (opcode == 8) {
+            *outreg = mach.ram[mach.regs[in]];
         }
     }
 }
