@@ -12,21 +12,40 @@ void exec(int ins) {
     int reg_idx = ins % 10;
     int value = (ins / 10) % 10;
     int *outreg = &mach.regs[reg_idx];
+    int in = (ins / 10*10) % 10;
 
     if (opcode == 1) {
-        *outreg = value;
+        if (value = 0) {
+            *outreg = in;
+        } else {
+            *outreg = mach.regs[in];
+        }
     } else if (opcode == 2) {
-        *outreg += value;
+        if (value = 0) {
+            *outreg += in;
+        } else {
+            *outreg += mach.regs[in];
+        }
     } else if (opcode == 3) {
-        *outreg -= value;
+        if (value = 0) {
+            *outreg -= in;
+        } else {
+            *outreg -= mach.regs[in];
+        }
     } else if (opcode == 4) {
-        *outreg *= value;
+        if (value = 0) {
+            *outreg *= in;
+        } else {
+            *outreg *= mach.regs[in];
+        }
     } else if (opcode == 5) {
-        if (value != 0) {
-            *outreg /= value;
+        if (value = 0) {
+            *outreg /= in;
+        } else {
+            *outreg /= mach.regs[in];
         }
     } else if (opcode == 6) {
-        mach.ram[mach.regs[reg_idx]] = mach.regs[value];
+        mach.ram[mach.regs[reg_idx]] = mach.regs[in];
     } else if (opcode == 7) {
         int condition1 = ins % 10;
         ins /= 10;
