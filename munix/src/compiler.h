@@ -24,7 +24,7 @@ typedef struct {
 
 int vasm_len(const char *str) {
 	int len = 0;
-	while (str[len] != '\n') {
+	while (str[len] != '\0') {
 		len++;
 	}
 	return len;
@@ -63,7 +63,7 @@ int asemble(const char *line) {
 	int opcode = -1;
 	int reg_idx = -1;
 	int value = -1;
-	int ins = -1;
+	int in = -1;
 	Ins pt;
 	pt = split(line, 0);
 	if (vasm_strcmp(pt.inst, "MOV", 3)) {
@@ -80,7 +80,7 @@ int asemble(const char *line) {
 		opcode = 7;
 		value = 4;
         } else if (vasm_strcmp(pt.inst, "LOAD", 4)) {
-		opcode = 8
+		opcode = 8;
         } else if (vasm_strcmp(pt.inst, "STORE", 5)) {
 		opcode = 6;
         } else if (vasm_strcmp(pt.inst, "JLT", 3)) {
@@ -154,6 +154,15 @@ int asemble(const char *line) {
 	} else {
 		in = pt.inst[0] - '0';
 	}
+	int bytecode = 0;
+	bytecode += in;
+	bytecode *= 10;
+	bytecode += value;
+	bytecode *= 10;
+	bytecode += reg_idx;
+	bytecode *= 10;
+	bytecode += opcode
+	return bytecode;
 }
 
 
