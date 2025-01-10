@@ -47,10 +47,8 @@ void exec(int ins) {
     } else if (opcode == 6) {
         mach.ram[mach.regs[reg_idx]] = mach.regs[in];
     } else if (opcode == 7) {
-        int condition1 = ins % 10;
-        ins /= 10;
-        int condition2 = ins % 10;
-        int jump_target = (ins / 10) % 10;
+        int condition1 = value;
+        int jump_target = mach.regs[in];
 
         int reg_val = mach.regs[reg_idx];
         int condition_met = 0;
@@ -58,13 +56,15 @@ void exec(int ins) {
         if (condition1 == 1 && reg_val < 0) {
             condition_met = 1;
         }
-        if (condition2 == 1 && reg_val == 0) {
+        if (condition1 == 2 && reg_val == 0) {
             condition_met = 1;
         }
-        if (condition1 == 2 && reg_val > 0) {
+        if (condition1 == 3 && reg_val > 0) {
             condition_met = 1;
         }
-        if (condition2 == 2 && reg_val != 0) {
+        if (condition1 == 4 && reg_val != 0) {
+            condition_met = 1;
+        } if (condition1 == 5) {
             condition_met = 1;
         }
 
