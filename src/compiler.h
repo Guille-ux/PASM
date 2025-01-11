@@ -154,7 +154,7 @@ int asemble(const char *line) {
 	} else {
 		in = pt.inst[0] - '0';
 	}
-	int bytecode = 0;
+	int bytecode = 10000;
 	bytecode += in;
 	bytecode *= 10;
 	bytecode += value;
