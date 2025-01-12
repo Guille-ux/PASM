@@ -155,13 +155,7 @@ int asemble(const char *line) {
 		in = pt.inst[0] - '0';
 	}
 	int bytecode = 10000;
-	bytecode += in;
-	bytecode *= 10;
-	bytecode += value;
-	bytecode *= 10;
-	bytecode += reg_idx;
-	bytecode *= 10;
-	bytecode += opcode;
+	int bytecode = 10000 + in * 1000 + value * 100 + reg_idx * 10 + opcode;
 	return bytecode;
 }
 
