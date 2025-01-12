@@ -42,7 +42,7 @@ char vasm_strcmp(const char *str1, const char *str2, int len) {
 Ins first(const char *str, int pos) {
 	Ins ins_ret;
 	ins_ret.fpos = pos;
-	for (int i = pos; str[i] != ' ' || i < INS_SIZE; i++) {
+	for (int i = pos; str[i] != ' ' && i < INS_SIZE; i++) {
 		ins_ret.inst[i] = str[i];
 		ins_ret.fpos++;
 	}
