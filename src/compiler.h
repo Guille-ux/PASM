@@ -43,7 +43,7 @@ Ins first(const char *str, int pos) {
 	Ins ins_ret;
 	ins_ret.fpos = pos;
 	for (int i = pos; str[i] != ' ' || i < INS_SIZE; i++) {
-		ins_ret.ins[i] = str[i];
+		ins_ret.inst[i] = str[i];
 		ins_ret.fpos++;
 	}
 	return ins_ret;
@@ -161,7 +161,7 @@ int asemble(const char *line) {
 	bytecode *= 10;
 	bytecode += reg_idx;
 	bytecode *= 10;
-	bytecode += opcode
+	bytecode += opcode;
 	return bytecode;
 }
 
