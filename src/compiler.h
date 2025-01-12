@@ -31,8 +31,8 @@ int vasm_len(const char *str) {
 }
 
 char vasm_strcmp(const char *str1, const char *str2, int len, int b) {
-	for (int ch = 0; ch < (len+b); ch++) {
-		if (str1[ch+b] != str2[ch+b]) {
+	for (int ch = 0; ch < len); ch++) {
+		if (str1[ch+b] != str2[ch]) {
 			return 0;
 		}
 	}
@@ -101,35 +101,35 @@ int asemble(const char *line) {
 		return -2;
 	}
 	if (value < 0) {
-	        if (vasm_strcmp(line, "NUM", 3, 6)) {
+	        if (vasm_strcmp(line, "NUM", 3, 7)) {
 			value = 0;
-	        } else if (vasm_strcmp(line, "REG", 3, 6)) {
+	        } else if (vasm_strcmp(line, "REG", 3, 7)) {
 			value = 1;
 		}
 	} if (value < 0) {
 		return -3;
 	} if (opcode == 7 || value == 1) {
-	        if (vasm_strcmp(line, "AX", 2, 9)) {
+	        if (vasm_strcmp(line, "AX", 2, 11)) {
         	        in = 0;
-	        } else if (vasm_strcmp(line, "BX", 2, 9)) {
+	        } else if (vasm_strcmp(line, "BX", 2, 11)) {
         	        in = 1;
-	        } else if (vasm_strcmp(line, "CX", 2, 9)) {
+	        } else if (vasm_strcmp(line, "CX", 2, 11)) {
         	        in = 2;
-	        } else if (vasm_strcmp(line, "DX", 2, 9)) {
+	        } else if (vasm_strcmp(line, "DX", 2, 11)) {
         	        in = 3;
-	        } else if (vasm_strcmp(line, "EX", 2, 9)) {
+	        } else if (vasm_strcmp(line, "EX", 2, 11)) {
         	        in = 4;
-	        } else if (vasm_strcmp(line, "FX", 2, 9)) {
+	        } else if (vasm_strcmp(line, "FX", 2, 11)) {
 	                in = 5;
-	        } else if (vasm_strcmp(line, "GX", 2, 9)) {
+	        } else if (vasm_strcmp(line, "GX", 2, 11)) {
         	        in = 6;
-	        } else if (vasm_strcmp(line, "HX", 2, 9)) {
+	        } else if (vasm_strcmp(line, "HX", 2, 11)) {
 	                in = 7;
-	        } else if (vasm_strcmp(line, "IX", 2, 9)) {
+	        } else if (vasm_strcmp(line, "IX", 2, 11)) {
 	                in = 8;
 	        }
-	} else {
-		in = pt.inst[9] - '0';
+	} else if (value == 0){
+		in = line[11] - '0';
 	}
 	int bytecode = 10000 + in * 1000 + value * 100 + reg_idx * 10 + opcode;
 	return bytecode;
