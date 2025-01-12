@@ -15,6 +15,19 @@
 //
 //END of sintaxis explaining
 
+//ERROR CODES
+//-1 ERROR IN OPCODE, BAD INSTRUCTION
+//-2 ERROR IN THE OUTREGISTER, NOT DECLARED OR BAD DECLARED
+//-3 ERROR IN VALUE, VALUE NOT DECLARED CORRECTLY
+//-4 ERROR IN THE JUMP, BEFORE THE JUMP_TARGET YOU NEED TO ADD JMP 
+//BAD SINTAX EXAMPLES AND GOOD SINTAX EXAMPLES
+//
+// MOV REG AX BX the order is bad, first instruction second out register third NUM or REG (in jumps is JMP) and in the end a number if you have choosen NUM or a register
+// MOV AX REG BX good instruction
+// JMP AX BX bad instruction you need to add JMP → JMP AX JMP BX
+//
+//JUMPS in jumps in the first reg you add the reg to compare in the second reg you put the TARGET
+
 #define INS_SIZE 5
 
 typedef struct {
@@ -99,8 +112,11 @@ int asemble(const char *line) {
 		reg_idx = 8;
 	} if (reg_idx < 0) {
 		return -2;
-	}
-	if (value < 0) {
+	} if (value > 0) {
+	    if (vasm_strcmp(line, "JMP", 3, 7) == 0) {
+	        return -4;
+	    }
+	} else if (value < 0) {
 	        if (vasm_strcmp(line, "NUM", 3, 7)) {
 			value = 0;
 	        } else if (vasm_strcmp(line, "REG", 3, 7)) {
