@@ -1,3 +1,5 @@
+#include "out-drivs.h"
+
 typedef struct {
     int counter;
     int regs[9];
@@ -82,6 +84,10 @@ void exec(int ins) {
             mach.counter = jump_target;
         } else if (opcode == 8) {
             *outreg = mach.ram[mach.regs[in]];
+        } else if (opcode == 9) {
+            if (value == 0) {
+                pch(mach.regs[reg_idx], mach.regs[in] / 80, mach.regs[in] % 80);
+            }
         }
     }
 }
