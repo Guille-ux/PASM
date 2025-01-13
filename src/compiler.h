@@ -27,6 +27,7 @@
 // JMP AX BX bad instruction you need to add JMP → JMP AX JMP BX
 //
 //JUMPS in jumps in the first reg you add the reg to compare in the second reg you put the TARGET
+//I HAVE ADDED INTERRUPTS
 
 #define INS_SIZE 5
 
@@ -88,6 +89,13 @@ int asemble(const char *line) {
         } else if (vasm_strcmp(line, "JMP", 3, 0)) {
 		opcode = 7;
 		value = 5;
+	} else if (vasm_strcmp(line, "INT", 3, 0)) {
+		opcode = 9;
+		if (vasm_strcmp(line, "PUT", 3, 7)) {
+			value = 0;
+		} else {
+			return -3;
+		}
 	}
 	if (opcode < 0) { // MOV AX NUM 5
 		return -1;
