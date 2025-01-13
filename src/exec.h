@@ -6,6 +6,16 @@ typedef struct {
 
 VMachine mach;
 
+void init_mach() {
+    mach.counter = 0;
+    for (int i = 0; i < 9; i++) {
+        mach.regs[i] = 0;
+    }
+    for (int i = 0; i < 512; i++) {
+        mach.ram[i] = 0;
+    }
+}
+
 void exec(int ins) {
     int opcode = ins % 10;
     ins /= 10;
