@@ -13,6 +13,14 @@ void compile_run(const char *file) {
   while (fgets(buffer, MAX_LEN, f)) {
     strtok(buffer, '\n');
     instructions[time] = asemble(buffer);
+    if (asemble(buffer) == -1) {
+      break;
+    }
     time++;
+  }
+  init_mach();
+  while (mach.counter < time) {
+    exec(instructions[mach.counter]);
+    mach.counter++;
   }
 }
