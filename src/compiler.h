@@ -45,7 +45,7 @@ int vasm_len(const char *str) {
 }
 
 char vasm_strcmp(const char *str1, const char *str2, int len, int b) {
-	for (int ch = 0; ch < len); ch++) {
+	for (int ch = 0; ch < len; ch++) {
 		if (str1[ch+b] != str2[ch]) {
 			return 0;
 		}
