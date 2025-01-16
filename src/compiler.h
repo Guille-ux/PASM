@@ -120,7 +120,7 @@ int asemble(const char *line) {
 		reg_idx = 8;
 	} if (reg_idx < 0) {
 		return -2;
-	} if (value > 0) {
+	} if (opcode > 7) {
 	    if (vasm_strcmp(line, "JMP", 3, 7) == 0) {
 	        return -4;
 	    }
