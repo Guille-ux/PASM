@@ -5,6 +5,8 @@
 #define MAX_LEN 20
 #define MAX_INS 65536
 
+VMachine mach;
+
 void compile_run(const char *file) {
   FILE *f = fopen(file, "r");
   char buffer[MAX_LEN];
@@ -18,9 +20,9 @@ void compile_run(const char *file) {
     }
     time++;
   }
-  init_mach();
+  init_mach(&mach);
   while (mach.counter < time) {
-    exec(instructions[mach.counter]);
+    exec(instructions[mach.counter], &mach);
     mach.counter++;
   }
 }
