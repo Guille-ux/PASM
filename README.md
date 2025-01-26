@@ -1,2 +1,2 @@
-# VASM
-An a virtual assembly for MunixOs and systems with ANSI C
+# PASM
+- Pasm is an portable asembly for all architectures and all operating systems
