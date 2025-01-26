@@ -1,9 +1,11 @@
 #include "out-drivs.h"
 
+#define RAM_LEN 512
+
 typedef struct {
     int counter;
     int regs[9];
-    int ram[512];
+    int ram[RAM_LEN];
 } VMachine;
 
 void init_mach(VMachine *mach) {
