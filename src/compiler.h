@@ -92,7 +92,7 @@ int asemble(const char *line) {
 	} else if (vasm_strcmp(line, "INT", 3, 0)) {
 		opcode = 9;
 		if (vasm_strcmp(line, "PUT", 3, 7)) {
-			value = 0;
+			value = 1;
 		} else {
 			return -3;
 		}
@@ -120,7 +120,7 @@ int asemble(const char *line) {
 		reg_idx = 8;
 	} if (reg_idx < 0) {
 		return -2;
-	} if (opcode > 7) {
+	} if (opcode == 7) {
 	    if (vasm_strcmp(line, "JMP", 3, 7) == 0) {
 	        return -4;
 	    }
@@ -132,7 +132,7 @@ int asemble(const char *line) {
 		}
 	} if (value < 0) {
 		return -3;
-	} if (opcode == 7 || value == 1) {
+	} if (opcode == 7 || value != 0) {
 	        if (vasm_strcmp(line, "AX", 2, 11)) {
         	        in = 0;
 	        } else if (vasm_strcmp(line, "BX", 2, 11)) {
