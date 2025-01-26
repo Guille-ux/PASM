@@ -84,7 +84,7 @@ void exec(int ins, VMachine *mach) {
     } else if (opcode == 8) {
         *outreg = mach->ram[mach->regs[in]];
     } else if (opcode == 9) {
-        if (value == 0) {
+        if (value == 1) {
             pch(mach->regs[reg_idx], mach->regs[in] / 80, mach->regs[in] % 80);
         }
     }
