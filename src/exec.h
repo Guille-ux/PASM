@@ -51,10 +51,12 @@ void exec(int ins, VMachine *mach) {
             *outreg *= mach->regs[in];
         }
     } else if (opcode == 5) {
-        if (value == 0) {
+        if (value == 0 && in != 0) {
             *outreg /= in;
         } else {
-            *outreg /= mach->regs[in];
+	    if (mach->regs[in] != 0) {
+        	*outreg /= mach->regs[in];
+	    }
         }
     } else if (opcode == 6) {
         mach->ram[mach->regs[reg_idx]] = mach->regs[in];
