@@ -32,6 +32,7 @@ void init_mach(VMachine *mach) {
 }
 
 void exec(int ins, VMachine *mach) {
+    mach->counter++;
     int opcode = ins % 10;
     ins /= 10;
     int reg_idx = ins % 10;
