@@ -14,7 +14,7 @@
 #ifdef MUNIX_KERNEL
 
 void pch(char ch, int x, int y) {
-  putchar(ch, x+y*80);
+  putchar(x+y*80, ch);
 }
 
 #endif
